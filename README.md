@@ -15,7 +15,7 @@ Ini adalah aplikasi Android untuk mengonversi berbagai satuan pengukuran, termas
 - **Sistem Build:** Gradle
 - **IDE:** Android Studio
 
-## Cara Membangun
+## Cara Build
 
 1. Kloning repositori ini.
 2. Buka proyek di Android Studio.
