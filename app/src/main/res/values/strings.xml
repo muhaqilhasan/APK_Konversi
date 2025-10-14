@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">latihanOne</string>
+        <string name="temperature_conversion">Konversi Suhu</string>
+        <string name="select_conversion">Pilih Konversi:</string>
+
+        <string name="temperature_conversion_icon">Icon for temperature conversion menu</string>
+</resources>
