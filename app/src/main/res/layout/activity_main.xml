@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#41577C"
     android:orientation="vertical"
-    android:background="#F5F5F5"
     android:padding="24dp">
 
     <LinearLayout
@@ -14,24 +13,26 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imgMenu"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="16dp"
-            android:src="@mipmap/ic_logo" />
+        <TextView
+            android:id="@+id/txtMenu0"
+            android:layout_width="279dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/adlam_display"
+            android:text="Simple"
+            android:textColor="#38A9CC"
+            android:textSize="60sp" />
 
         <TextView
-            android:id="@+id/txtMenu"
-            android:layout_width="wrap_content"
+            android:id="@+id/txtMenu1"
+            android:layout_width="279dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="32dp"
-            android:text="Project Unit Konversi"
-            android:textColor="#444"
-            android:textSize="22sp"
+            android:fontFamily="@font/adlam_display"
+            android:text="CONVERSI"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -39,45 +40,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="16dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp">
+            android:paddingRight="10dp">
 
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cdTemp"
                 android:layout_width="0dp"
                 android:layout_height="140dp"
+                android:layout_margin="10dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:background="@android:color/white"
-                card_view:cardCornerRadius="12dp"
-                card_view:cardElevation="4dp">
+                card_view:cardBackgroundColor="#66B3FF"
+                card_view:cardCornerRadius="30dp"
+                card_view:cardElevation="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:layout_margin="5dp"
                     android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imgTemp"
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        android:src="@mipmap/ic_temp" />
 
                     <TextView
                         android:id="@+id/txtTemp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginLeft="15dp"
                         android:layout_marginTop="8dp"
+                        android:layout_marginBottom="15dp"
+                        android:fontFamily="@font/adlam_display"
+                        android:foregroundGravity="top"
                         android:text="Suhu"
-                        android:textColor="#444"
-                        android:textSize="16sp" />
+                        android:textColor="#FFFFFF"
+                        android:textSize="24sp" />
+
+                    <ImageView
+                        android:id="@+id/imgTemp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="15dp"
+                        android:src="@drawable/temperatur" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -88,29 +95,35 @@
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:background="@android:color/white"
-                card_view:cardCornerRadius="12dp"
-                card_view:cardElevation="4dp">
+                card_view:cardBackgroundColor="#81EB7B"
+                card_view:cardCornerRadius="30dp"
+                card_view:cardElevation="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:gravity="left"
                     android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imgMasa"
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        android:src="@mipmap/ic_masa" />
 
                     <TextView
                         android:id="@+id/txtMasa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
                         android:layout_marginTop="8dp"
+                        android:layout_marginBottom="15dp"
+                        android:fontFamily="@font/adlam_display"
                         android:text="Masa"
-                        android:textColor="#444"
-                        android:textSize="16sp" />
+                        android:textColor="#FFFEFE"
+                        android:textSize="24sp" />
+
+                    <ImageView
+                        android:id="@+id/imgMasa"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_marginLeft="15dp"
+                        android:src="@drawable/scales" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
@@ -119,11 +132,9 @@
             android:id="@+id/layMenu2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingLeft="10dp"
-            android:paddingTop="10dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp">
 
@@ -131,32 +142,39 @@
                 android:id="@+id/cdLuas"
                 android:layout_width="0dp"
                 android:layout_height="140dp"
+                android:layout_margin="10dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:background="@android:color/white"
-                card_view:cardCornerRadius="12dp"
-                card_view:cardElevation="4dp">
+                card_view:cardBackgroundColor="#FF6A30"
+                card_view:cardCornerRadius="30dp"
+                card_view:cardElevation="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:layout_height="140dp"
+                    android:gravity="left"
                     android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imgLuas"
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        android:src="@mipmap/ic_luas" />
 
                     <TextView
                         android:id="@+id/txtLuas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
                         android:layout_marginTop="8dp"
+                        android:layout_marginBottom="15dp"
+                        android:fontFamily="@font/adlam_display"
                         android:text="Luas"
-                        android:textColor="#444"
-                        android:textSize="16sp" />
+                        android:textColor="#FFFFFF"
+                        android:textSize="24sp" />
+
+                    <ImageView
+                        android:id="@+id/imgLuas"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_marginLeft="15dp"
+                        android:src="@drawable/area" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -167,29 +185,35 @@
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
                 android:background="@android:color/white"
-                card_view:cardCornerRadius="12dp"
-                card_view:cardElevation="4dp">
+                card_view:cardBackgroundColor="#F02AFB"
+                card_view:cardCornerRadius="30dp"
+                card_view:cardElevation="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
+                    android:gravity="left"
                     android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imgJarak"
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        android:src="@mipmap/ic_jarak" />
 
                     <TextView
                         android:id="@+id/txtJarak"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
                         android:layout_marginTop="8dp"
+                        android:layout_marginBottom="15dp"
+                        android:fontFamily="@font/adlam_display"
                         android:text="Jarak"
-                        android:textColor="#444"
-                        android:textSize="16sp" />
+                        android:textColor="#FFFFFF"
+                        android:textSize="24sp" />
+
+                    <ImageView
+                        android:id="@+id/imgJarak"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_marginLeft="15dp"
+                        android:src="@drawable/ruler" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>

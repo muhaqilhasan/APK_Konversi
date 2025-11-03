@@ -1,139 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainLayoutMasa"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#41577C"
     android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp"
-    android:background="#F5F5F5"
     tools:context=".DetailMasaActivity">
 
-    <LinearLayout
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/headerCard"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center|top"
-        android:orientation="vertical"
-        android:paddingTop="50dp">
-
-        <ImageView
-            android:id="@+id/imgMenuMasa"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginBottom="16dp"
-            android:src="@mipmap/ic_masa" />
-
-        <TextView
-            android:id="@+id/txtMenuMasa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:text="Konversi Massa"
-            android:textColor="@android:color/black"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+        android:layout_height="130dp"
+        android:layout_alignParentTop="true"
+        app:cardBackgroundColor="#6EC7FF"
+        app:shapeAppearanceOverlay="@style/CustomCardCorners">
 
         <LinearLayout
-            android:id="@+id/layPilihanMasa"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/txtPilihanMasa"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text="Pilih Konversi"
-                android:textSize="16sp" />
-
-            <TextView
+                android:id="@+id/txtMenuMasa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text=":"
-                android:textSize="16sp" />
-
-            <Spinner
-                android:id="@+id/spMasa"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layInputMasa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/txtInputMasa"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text="Masukan Angka"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text=":"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/edInputMasa"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="0"
-                android:inputType="numberDecimal" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/tbHitungMasa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:text="Hitung"
-            android:textColor="@android:color/white" />
-
-        <LinearLayout
-            android:id="@+id/layHasilMasa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/txtMasa"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text="Hasilnya"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text=":"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/txtHasilMasa"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="00"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/adlam_display"
+                android:text="Konversi Massa"
+                android:textColor="@color/white"
+                android:textSize="34sp"
                 android:textStyle="bold" />
         </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:id="@+id/contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/numberPadLayout"
+        android:layout_below="@id/headerCard"
+        android:gravity="center|top"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingBottom="6dp"
+            android:text="From"
+            android:textColor="#FFFFFF" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_gravity="center_horizontal"
+            app:cardCornerRadius="10dp"
+            app:contentPadding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spMasa"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="0"
+                    android:text="|"
+                    android:textSize="34sp" />
+
+                <EditText
+                    android:id="@+id/edInputMasa"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:focusable="false"
+                    android:hint="0"
+                    android:inputType="none"
+                    android:textColor="#000000"
+                    android:textIsSelectable="true"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            app:srcCompat="@drawable/arrows" />
+
+        <TextView
+            android:id="@+id/txtSuhu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingBottom="6dp"
+            android:text="To"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            app:cardCornerRadius="10dp"
+            app:contentPadding="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spMasaHasil"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="0"
+                    android:text="|"
+                    android:textSize="34sp" />
+
+                <TextView
+                    android:id="@+id/txtHasilMasa"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
     </LinearLayout>
 
-</LinearLayout>
+    <GridLayout
+        android:id="@+id/numberPadLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:columnCount="3"
+        android:rowCount="4"
+        android:background="#41577C">
+
+        <Button
+            android:id="@+id/btn1"
+            android:text="1"
+            style="@style/NumberPadButton" />
+        <Button
+            android:id="@+id/btn2"
+            android:text="2"
+            style="@style/NumberPadButton" />
+        <Button
+            android:id="@+id/btn3"
+            android:text="3"
+            style="@style/NumberPadButton" />
+
+        <Button
+            android:id="@+id/btn4"
+            android:text="4"
+            style="@style/NumberPadButton" />
+        <Button
+            android:id="@+id/btn5"
+            android:text="5"
+            style="@style/NumberPadButton" />
+        <Button
+            android:id="@+id/btn6"
+            android:text="6"
+            style="@style/NumberPadButton" />
+
+        <Button
+            android:id="@+id/btn7"
+            android:text="7"
+            style="@style/NumberPadButton" />
+        <Button
+            android:id="@+id/btn8"
+            android:text="8"
+            style="@style/NumberPadButton" />
+        <Button
+            android:id="@+id/btn9"
+            android:text="9"
+            style="@style/NumberPadButton" />
+
+        <Button
+            android:id="@+id/btnClear"
+            style="@style/NumberPadButton"
+            android:text="C" />
+        <Button
+            android:id="@+id/btn0"
+            android:text="0"
+            style="@style/NumberPadButton" />
+
+        <ImageButton
+            android:id="@+id/btnBackspace"
+            style="@style/NumberPadButton"
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:contentDescription="Hapus"
+            app:srcCompat="@drawable/backspace" />
+
+    </GridLayout>
+
+</RelativeLayout>

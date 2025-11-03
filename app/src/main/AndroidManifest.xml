@@ -24,6 +24,10 @@
         <activity android:name=".DetailMasaActivity" />
         <activity android:name=".DetailLuasActivity" />
         <activity android:name=".DetailJarakActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

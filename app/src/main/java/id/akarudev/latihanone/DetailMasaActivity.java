@@ -2,92 +2,171 @@ package id.akarudev.latihanone;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import java.text.DecimalFormat;
 
 public class DetailMasaActivity extends AppCompatActivity {
-    Spinner spMasa;
+    Spinner spMasa, spMasaHasil;
     EditText edInputMasa;
     TextView txtHasilMasa;
-    Button tbHitungMasa;
-    float hasilKonversi = 0;
-    int posKonversi = 0;
+
+    int posFrom = 0;
+    int posTo = 0;
+    Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
+    Button btnClear;
+    ImageButton btnBackspace;
+    private static final double KG_TO_GRAM = 1000;
+    private static final double KG_TO_MG = 1000000;
+    private static final double KG_TO_LB = 2.20462262;
+    private static final double KG_TO_OZ = 35.2739619;
+
+    private DecimalFormat decimalFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_masa);
-
+        decimalFormat = new DecimalFormat("0.#####");
         edInputMasa = findViewById(R.id.edInputMasa);
         txtHasilMasa = findViewById(R.id.txtHasilMasa);
         spMasa = findViewById(R.id.spMasa);
-        tbHitungMasa = findViewById(R.id.tbHitungMasa);
-
+        spMasaHasil = findViewById(R.id.spMasaHasil);
+        setupNumberPad();
         String[] dataMasa = new String[] {
-                "Kg to Gram", "Kg to Mg", "Kg to Lb", "Kg to Oz",
-                "Gram to Kg", "Gram to Mg", "Gram to Lb", "Gram to Oz",
-                "Mg to Kg", "Mg to Gram", "Mg to Lb", "Mg to Oz",
-                "Lb to Kg", "Lb to Gram", "Lb to Mg", "Lb to Oz",
-                "Oz to Kg", "Oz to Gram", "Oz to Mg", "Oz to Lb"
+                "Kilogram (kg)",
+                "Gram (g)",
+                "Miligram (mg)",
+                "Pound (lb)",
+                "Ons (oz)"
         };
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, dataMasa);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spMasa.setAdapter(adapter);
-
+        spMasaHasil.setAdapter(adapter);
         spMasa.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                posKonversi = position;
+                posFrom = position;
+                calculate();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) { }
         });
-
-        tbHitungMasa.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
+        spMasaHasil.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                String input = edInputMasa.getText().toString();
-                if (input.isEmpty()) {
-                    txtHasilMasa.setText("0");
-                    return;
-                }
-                float value = Float.parseFloat(input);
-                switch (posKonversi) {
-                    case 0: hasilKonversi = value * 1000; break; // Kg to Gram
-                    case 1: hasilKonversi = value * 1_000_000; break; // Kg to Mg
-                    case 2: hasilKonversi = value * 2.20462f; break; // Kg to Lb
-                    case 3: hasilKonversi = value * 35.27396f; break; // Kg to Oz
-
-                    case 4: hasilKonversi = value / 1000; break; // Gram to Kg
-                    case 5: hasilKonversi = value * 1000; break; // Gram to Mg
-                    case 6: hasilKonversi = value * 0.00220462f; break; // Gram to Lb
-                    case 7: hasilKonversi = value * 0.03527396f; break; // Gram to Oz
-
-                    case 8: hasilKonversi = value / 1_000_000; break; // Mg to Kg
-                    case 9: hasilKonversi = value / 1000; break; // Mg to Gram
-                    case 10: hasilKonversi = value * 0.00000220462f; break; // Mg to Lb
-                    case 11: hasilKonversi = value * 0.00003527396f; break; // Mg to Oz
-
-                    case 12: hasilKonversi = value * 0.453592f; break; // Lb to Kg
-                    case 13: hasilKonversi = value * 453.592f; break; // Lb to Gram
-                    case 14: hasilKonversi = value * 453592f; break; // Lb to Mg
-                    case 15: hasilKonversi = value * 16f; break; // Lb to Oz
-
-                    case 16: hasilKonversi = value * 0.0283495f; break; // Oz to Kg
-                    case 17: hasilKonversi = value * 28.3495f; break; // Oz to Gram
-                    case 18: hasilKonversi = value * 28349.5f; break; // Oz to Mg
-                    case 19: hasilKonversi = value * 0.0625f; break; // Oz to Lb
-                }
-                txtHasilMasa.setText("" + hasilKonversi);
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                posTo = position;
+                calculate();
             }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) { }
         });
     }
+    private void setupNumberPad() {
+        btn0 = findViewById(R.id.btn0);
+        btn1 = findViewById(R.id.btn1);
+        btn2 = findViewById(R.id.btn2);
+        btn3 = findViewById(R.id.btn3);
+        btn4 = findViewById(R.id.btn4);
+        btn5 = findViewById(R.id.btn5);
+        btn6 = findViewById(R.id.btn6);
+        btn7 = findViewById(R.id.btn7);
+        btn8 = findViewById(R.id.btn8);
+        btn9 = findViewById(R.id.btn9);
+        btnBackspace = findViewById(R.id.btnBackspace);
+        btnClear = findViewById(R.id.btnClear);
+        btn0.setOnClickListener(v -> appendToInput("0"));
+        btn1.setOnClickListener(v -> appendToInput("1"));
+        btn2.setOnClickListener(v -> appendToInput("2"));
+        btn3.setOnClickListener(v -> appendToInput("3"));
+        btn4.setOnClickListener(v -> appendToInput("4"));
+        btn5.setOnClickListener(v -> appendToInput("5"));
+        btn6.setOnClickListener(v -> appendToInput("6"));
+        btn7.setOnClickListener(v -> appendToInput("7"));
+        btn8.setOnClickListener(v -> appendToInput("8"));
+        btn9.setOnClickListener(v -> appendToInput("9"));
+
+        btnBackspace.setOnClickListener(v -> deleteFromInput());
+        btnClear.setOnClickListener(v -> clearInput());
+    }
+    private void appendToInput(String number) {
+        edInputMasa.getText().append(number);
+        calculate();
+    }
+    private void deleteFromInput() {
+        Editable currentText = edInputMasa.getText();
+        if (currentText.length() > 0) {
+            edInputMasa.setText(currentText.subSequence(0, currentText.length() - 1));
+            edInputMasa.setSelection(edInputMasa.getText().length());
+        }
+        calculate();
+    }
+    private void clearInput() {
+        edInputMasa.setText("");
+        calculate();
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void calculate() {
+        String input = edInputMasa.getText().toString();
+        if (input.isEmpty()) {
+            txtHasilMasa.setText("0");
+            return;
+        }
+
+        try {
+            double value = Double.parseDouble(input);
+            double valueInKg = 0;
+            switch (posFrom) {
+                case 0:
+                    valueInKg = value;
+                    break;
+                case 1:
+                    valueInKg = value / KG_TO_GRAM;
+                    break;
+                case 2:
+                    valueInKg = value / KG_TO_MG;
+                    break;
+                case 3:
+                    valueInKg = value / KG_TO_LB;
+                    break;
+                case 4:
+                    valueInKg = value / KG_TO_OZ;
+                    break;
+            }
+            double hasilKonversi = 0;
+            switch (posTo) {
+                case 0:
+                    hasilKonversi = valueInKg;
+                    break;
+                case 1:
+                    hasilKonversi = valueInKg * KG_TO_GRAM;
+                    break;
+                case 2:
+                    hasilKonversi = valueInKg * KG_TO_MG;
+                    break;
+                case 3:
+                    hasilKonversi = valueInKg * KG_TO_LB;
+                    break;
+                case 4:
+                    hasilKonversi = valueInKg * KG_TO_OZ;
+                    break;
+            }
+            txtHasilMasa.setText(decimalFormat.format(hasilKonversi));
+
+        } catch (NumberFormatException e) {
+            txtHasilMasa.setText("Error");
+        }
+    }
 }
+
