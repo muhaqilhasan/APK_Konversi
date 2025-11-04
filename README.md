@@ -20,16 +20,37 @@ Aplikasi ini memiliki beberapa fitur konversi utama, antara lain:
 
 ## 3. Tampilan Aplikasi
 
-Berikut beberapa tangkapan layar dari aplikasi:
+Berikut beberapa cuplikan layar dari aplikasi:
 
-| No | Tampilan | Gambar |
-|----|-----------|--------|
-| 1 | Splash Screen | ![Splash Screen](screenshot/splashscreen.jpg) |
-| 2 | Menu Utama | ![Menu](screenshot/menu.jpg) |
-| 3 | Konversi Jarak | ![Jarak](screenshot/Jarak.jpg) |
-| 4 | Konversi Luas | ![Luas](screenshot/Luas.jpg) |
-| 5 | Konversi Massa | ![Massa](screenshot/masa.jpg) |
-| 6 | Konversi Suhu | ![Suhu](screenshot/suhu.jpg) |
+<p align="center">
+  <img src="screenshot/splash%20screen.jpg" alt="Splash Screen" width="250"/><br/>
+  <em>Gambar 1. Splash Screen</em>
+</p>
+
+<p align="center">
+  <img src="screenshot/menu.jpg" alt="Menu Utama" width="250"/><br/>
+  <em>Gambar 2. Menu Utama</em>
+</p>
+
+<p align="center">
+  <img src="screenshot/Jarak.jpg" alt="Konversi Jarak" width="250"/><br/>
+  <em>Gambar 3. Tampilan Konversi Jarak</em>
+</p>
+
+<p align="center">
+  <img src="screenshot/Luas.jpg" alt="Konversi Luas" width="250"/><br/>
+  <em>Gambar 4. Tampilan Konversi Luas</em>
+</p>
+
+<p align="center">
+  <img src="screenshot/masa.jpg" alt="Konversi Massa" width="250"/><br/>
+  <em>Gambar 5. Tampilan Konversi Massa</em>
+</p>
+
+<p align="center">
+  <img src="screenshot/suhu.jpg" alt="Konversi Suhu" width="250"/><br/>
+  <em>Gambar 6. Tampilan Konversi Suhu</em>
+</p>
 
 ---
 
@@ -37,7 +58,7 @@ Berikut beberapa tangkapan layar dari aplikasi:
 - **Bahasa Pemrograman:** Java  
 - **Lingkungan Pengembangan:** Android Studio  
 - **Target Platform:** Android (APK)  
-- **Versi Minimum SDK:** *(sesuaikan dengan `build.gradle` bila diketahui)*
+- **Versi Minimum SDK:** API Level 19 (Android 4.4 KitKat)
 
 ---
 
