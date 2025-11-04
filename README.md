@@ -23,7 +23,7 @@ Aplikasi ini memiliki beberapa fitur konversi utama, antara lain:
 Berikut beberapa cuplikan layar dari aplikasi:
 
 <p align="center">
-  <img src="screenshot/splash%20screen.jpg" alt="Splash Screen" width="250"/><br/>
+  <img src="screenshot/splashscreen.jpg" alt="Splash Screen" width="250"/><br/>
   <em>Gambar 1. Splash Screen</em>
 </p>
 
